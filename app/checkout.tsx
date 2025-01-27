@@ -1,6 +1,6 @@
 "use client";
 
-import { Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -31,16 +31,18 @@ function cleanBase64(base64String: string): string {
 export default function Checkout() {
   const { t, language, setLanguage } = useTranslation();
   const signatureRef = React.useRef<SignatureCanvas>(null);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const handleSubmit = async () => {
+    setIsSubmitting(true);
     try {
       const formContainer = document.getElementById("form-container");
 
       const result = await generatePDF(() => formContainer, {
-        filename: "medical-form.pdf",
         page: {
           margin: 5,
         },
+        method: "build",
         resolution: 2,
         overrides: {
           pdf: {
@@ -66,13 +68,12 @@ export default function Checkout() {
         throw new Error("Failed to send email");
       }
 
-      // Clear signature after successful submission
-      signatureRef.current?.clear();
-
       window.location.reload();
     } catch (error) {
       console.error("Error:", error);
       alert(t("checkout.errorSendingEmail"));
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -205,9 +206,22 @@ export default function Checkout() {
             <Button
               variant="contained"
               onClick={handleSubmit}
-              sx={{ width: { xs: "100%", sm: "auto" } }}
+              disabled={isSubmitting}
+              sx={{ width: { xs: "100%", sm: "auto" }, position: "relative" }}
             >
               {t("checkout.submit")}
+              {isSubmitting && (
+                <CircularProgress
+                  size={24}
+                  sx={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    marginTop: "-12px",
+                    marginLeft: "-12px",
+                  }}
+                />
+              )}
             </Button>
           </Box>
         </Grid>
