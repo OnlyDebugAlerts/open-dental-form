@@ -48,6 +48,8 @@
     "contraception": "Užívate hormonálnu antikoncepciu?",
     "questionForWomen": "Otázky pre pacientky:",
     "date": "Dátum:",
+    "details": "Poznámky",
+    "ifYesSpecify": "Ak áno, uveďte ktoré:",
     "signatureApprove": "Súhlasím so spracovaním svojich osobných údajov v informačnom systéme:",
     "signatureType": "podpis pacienta alebo zákonného zástupcu",
     "confirmation": "Potvrdzujem, že všetky údaje som uviedol (a) správne. Zmenu zdravotného stavu alebo zmenuliečby som povinný (á) aj bez vyzvania oznámiť ošetrujúcemu zubnému lekárovi.."

@@ -9,7 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import React from "react";
 import SignatureCanvas from "react-signature-canvas";
-import generatePDF from "react-to-pdf";
+import generatePDF, { Margin } from "react-to-pdf";
 import AddressForm from "./components/AddressForm";
 import MedicalHistory from "./components/MedicalHistory";
 import ValidatedInput from "./components/ValidatedInput";
@@ -40,7 +40,9 @@ export default function Checkout() {
 
       const result = await generatePDF(() => formContainer, {
         page: {
-          margin: 5,
+          format: "a4",
+          orientation: "portrait",
+          margin: Margin.MEDIUM,
         },
         method: "build",
         resolution: 2,

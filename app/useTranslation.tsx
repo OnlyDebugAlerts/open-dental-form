@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { defaultLanguage, languages } from "./trnaslations/utils";
+import { defaultLanguage, languages } from "./translations/utils";
 
 export const useTranslation = () => {
   const [language, setLanguage] = useState(defaultLanguage);
