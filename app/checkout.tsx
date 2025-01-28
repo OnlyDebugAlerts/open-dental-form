@@ -56,6 +56,13 @@ export default function Checkout() {
         },
       });
       const blob = result.output("blob");
+      const firstName =
+        (document.getElementById("first-name") as HTMLInputElement)?.value ||
+        "";
+      const lastName =
+        (document.getElementById("last-name") as HTMLInputElement)?.value || "";
+      const fullName = `${firstName} ${lastName}`.trim();
+      console.log(fullName);
       const response = await fetch("/api/send-form", {
         method: "POST",
         headers: {
@@ -63,6 +70,7 @@ export default function Checkout() {
         },
         body: JSON.stringify({
           pdfBlob: cleanBase64(await blobToBase64(blob)),
+          fullName,
         }),
       });
 

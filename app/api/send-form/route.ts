@@ -5,8 +5,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { pdfBlob } = await request.json();
-
+    const { pdfBlob, fullName } = await request.json();
+    console.log(`${fullName}-${new Date().toISOString().split('T')[0]}.pdf`);
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: "openko.dental@gmail.com",
@@ -14,7 +14,7 @@ export async function POST(request: Request) {
       text: 'Please find your medical form attached.',
       attachments: [
         {
-          filename: 'medical-form.pdf',
+          filename: `${fullName}-${new Date().toISOString().split('T')[0]}.pdf`,
           content: Buffer.from(pdfBlob, 'base64'),
         },
       ],
