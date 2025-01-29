@@ -16,6 +16,7 @@
     "medicalHistory": "Mедиcká história"
   },
   "medicalHistory": {
+    "agreementOnNotify": "Súhlas s upozorneniami.",
     "agreementNotify": "Súhlasím so zasielaním upozornení o potrebe objednania sa na zákroky.",
     "agreementSmsAndEmail": "Súhlasím so zasielaním SMS a e-mailových upozornení o mojich nadchádzajúcich návštevách v klinike.",
     "currentMedications": "Užívate lieky? Ak áno, uveďte aké:",

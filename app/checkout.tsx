@@ -13,7 +13,7 @@ import React from "react";
 import SignatureCanvas from "react-signature-canvas";
 import generatePDF, { Margin } from "react-to-pdf";
 import AddressForm from "./components/AddressForm";
-import MedicalHistory from "./components/MedicalHistory";
+import MedicalHistory, { FormGrid } from "./components/MedicalHistory";
 import ValidatedInput from "./components/ValidatedInput";
 import { useTranslation } from "./useTranslation";
 
@@ -179,6 +179,15 @@ export default function Checkout() {
                 },
               }}
             >
+              <FormGrid size={{ xs: 12 }}>
+                <Typography
+                  variant="subtitle1"
+                  gutterBottom
+                  style={{ fontWeight: "bold", fontSize: "18px" }}
+                >
+                  {t("medicalHistory.agreementOnNotify")}
+                </Typography>
+              </FormGrid>
               <FormControlLabel
                 control={<Checkbox />}
                 label={t("medicalHistory.agreementSmsAndEmail")}

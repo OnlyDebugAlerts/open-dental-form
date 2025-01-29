@@ -20,6 +20,7 @@
     "errorSendingEmail": "Error sending email. Please try again."
   },
   "medicalHistory": {
+    "agreementOnNotify": "Notification Agreement",
     "agreementNotify": "I give my consent to receive notifications about the need to register for procedures:",
     "agreementSmsAndEmail": "I agree to receive SMS and email notifications about upcoming clinic visits:",
     "currentMedications": "Are you taking any medications?",

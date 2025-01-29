@@ -8,7 +8,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 
-const FormGrid = styled(Grid)(() => ({
+export const FormGrid = styled(Grid)(() => ({
   display: "flex",
   flexDirection: "column",
 }));
