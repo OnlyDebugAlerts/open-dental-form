@@ -3,7 +3,9 @@
 import { CircularProgress, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
 import CssBaseline from "@mui/material/CssBaseline";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid2";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -177,13 +179,22 @@ export default function Checkout() {
                 },
               }}
             >
+              <FormControlLabel
+                control={<Checkbox />}
+                label={t("medicalHistory.agreementSmsAndEmail")}
+              />
+              <FormControlLabel
+                control={<Checkbox />}
+                label={t("medicalHistory.agreementNotify")}
+              />
               <Typography
                 variant="subtitle1"
                 gutterBottom
-                style={{ textAlign: "center" }}
+                style={{ textAlign: "center", marginTop: "20px" }}
               >
                 {t("medicalHistory.signatureApprove")}
               </Typography>
+
               <SignatureCanvas
                 ref={signatureRef}
                 penColor="black"

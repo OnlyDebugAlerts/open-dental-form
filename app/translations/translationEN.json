@@ -20,7 +20,10 @@
     "errorSendingEmail": "Error sending email. Please try again."
   },
   "medicalHistory": {
+    "agreementNotify": "I give my consent to receive notifications about the need to register for procedures:",
+    "agreementSmsAndEmail": "I agree to receive SMS and email notifications about upcoming clinic visits:",
     "currentMedications": "Are you taking any medications?",
+
     "ifYesSpecify": "If yes, specify which:",
     "details": "Additional details",
     "adverseReaction": "Have you ever had an adverse reaction during dental treatment?",

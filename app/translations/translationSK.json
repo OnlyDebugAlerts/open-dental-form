@@ -16,6 +16,8 @@
     "medicalHistory": "Mедиcká história"
   },
   "medicalHistory": {
+    "agreementNotify": "Súhlasím so zasielaním upozornení o potrebe objednania sa na zákroky.",
+    "agreementSmsAndEmail": "Súhlasím so zasielaním SMS a e-mailových upozornení o mojich nadchádzajúcich návštevách v klinike.",
     "currentMedications": "Užívate lieky? Ak áno, uveďte aké:",
     "adverseReaction": "Mali ste niekedy nepríjemnú reakciu pri ošetrení u zubného lekára?",
     "diseases": "Boli ste v minulosti chorý alebo ste sa liečili/liečite sa na niektoré z uvedených ochorení:",
