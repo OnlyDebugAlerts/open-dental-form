@@ -55,6 +55,19 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
           />
         </FormGrid>
         <FormGrid size={{ xs: 12 }}>
+          <FormLabel htmlFor="legalRepresentative" required>
+            {t("legalRepresentative")}
+          </FormLabel>
+          <OutlinedInput
+            id="legalRepresentative"
+            name="legalRepresentative"
+            type="text"
+            placeholder="John Snow"
+            autoComplete="name"
+            required
+          />
+        </FormGrid>
+        <FormGrid size={{ xs: 12 }}>
           <FormLabel htmlFor="email" required>
             {t("email")}
           </FormLabel>
@@ -68,6 +81,7 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
             size="small"
           />
         </FormGrid>
+
         <FormGrid size={{ xs: 12 }}>
           <FormLabel htmlFor="identificationNumber" required>
             {t("identificationNumber")}

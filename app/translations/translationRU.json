@@ -6,9 +6,11 @@
   "phone": "Телефон",
   "zipCode": "Индекс",
   "country": "Страна",
+  "legalRepresentative": "Имя, фамилия законного представителя",
   "yes": "Да",
   "email": "Email",
   "addressHeader": "Zdravotný záznam osoby v špecializovanej ambulancii zubného lekárstva",
+
   "medicalHistoryHeader": "Анкета истории болезни для пациента",
   "identificationNumber": "Идентификационный номер",
   "dateOfBirth": "Дата рождения",

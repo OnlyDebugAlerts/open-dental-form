@@ -7,10 +7,12 @@
   "phone": "Phone",
   "country": "Country",
   "yes": "Yes",
+  "legalRepresentative": "Name, surname of the legal representative",
   "email": "Email",
   "medicalHistoryHeader": "Patient medical history questionnaire",
   "identificationNumber": "Identification number",
   "dateOfBirth": "Date of birth",
+
   "checkout": {
     "address": "Address",
     "medicalHistory": "Medical history",
