@@ -11,12 +11,16 @@ import Typography from "@mui/material/Typography";
 export const FormGrid = styled(Grid)(() => ({
   display: "flex",
   flexDirection: "column",
+  pageBreakInside: "avoid",
+  breakInside: "avoid",
 }));
 
 const CheckboxGroup = styled(Grid)(() => ({
   display: "flex",
   flexDirection: "column",
   gap: "8px",
+  pageBreakInside: "avoid",
+  breakInside: "avoid",
 }));
 
 export default function MedicalHistory({ t }: { t: (path: string) => string }) {

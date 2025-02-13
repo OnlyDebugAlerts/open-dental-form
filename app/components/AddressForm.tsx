@@ -10,6 +10,8 @@ import ValidatedInput from "./ValidatedInput";
 const FormGrid = styled(Grid)(() => ({
   display: "flex",
   flexDirection: "column",
+  pageBreakInside: "avoid",
+  breakInside: "avoid",
 }));
 
 export default function AddressForm({ t }: { t: (path: string) => string }) {

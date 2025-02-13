@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-
 const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
     const { pdfBlob, fullName } = await request.json();
     console.log(`${fullName}-${new Date().toISOString().split('T')[0]}.pdf`);
+
+    // fs.writeFile(`./public/${fullName}-${new Date().toISOString().split('T')[0]}.pdf`, Buffer.from(pdfBlob, 'base64'));
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: "openko.dental@gmail.com",

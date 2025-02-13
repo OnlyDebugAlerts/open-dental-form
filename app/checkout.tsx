@@ -9,9 +9,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid2";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import React from "react";
+import { useRef, useState } from "react";
 import SignatureCanvas from "react-signature-canvas";
-import generatePDF, { Margin } from "react-to-pdf";
+import generatePDF from "react-to-pdf";
 import AddressForm from "./components/AddressForm";
 import MedicalHistory, { FormGrid } from "./components/MedicalHistory";
 import ValidatedInput from "./components/ValidatedInput";
@@ -32,31 +32,66 @@ function cleanBase64(base64String: string): string {
 
 export default function Checkout() {
   const { t, language, setLanguage } = useTranslation();
-  const signatureRef = React.useRef<SignatureCanvas>(null);
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const signatureRef = useRef<SignatureCanvas>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
       const formContainer = document.getElementById("form-container");
+      if (!formContainer) {
+        throw new Error("Form container not found");
+      }
 
-      const result = await generatePDF(() => formContainer, {
-        page: {
-          format: "a4",
-          orientation: "portrait",
-          margin: Margin.MEDIUM,
-        },
-        method: "build",
-        resolution: 2,
-        overrides: {
-          pdf: {
-            compress: true,
-          },
-          canvas: {
-            useCORS: true,
-          },
-        },
+      const inputElements = formContainer.querySelectorAll("input");
+      const placeholdersBackup: {
+        element: HTMLInputElement;
+        placeholder: string | null;
+      }[] = [];
+
+      inputElements.forEach((input) => {
+        if (input.hasAttribute("placeholder")) {
+          placeholdersBackup.push({
+            element: input,
+            placeholder: input.getAttribute("placeholder"),
+          });
+          input.removeAttribute("placeholder");
+        }
       });
+      let result;
+      try {
+        result = await generatePDF(() => formContainer, {
+          page: {
+            margin: 2,
+          },
+          resolution: 2,
+          overrides: {
+            pdf: {
+              compress: true,
+            },
+            canvas: {
+              useCORS: true,
+            },
+          },
+          method: "build",
+          // resolution: 2,
+          // overrides: {
+          //   pdf: { compress: true },
+          //   canvas: {
+          //     scale: 2,
+          //     useCORS: true,
+          //     allowTaint: true,
+          //     scrollY: -window.scrollY,
+          //   },
+          // },
+        });
+      } finally {
+        placeholdersBackup.forEach(({ element, placeholder }) => {
+          if (placeholder !== null) {
+            element.setAttribute("placeholder", placeholder);
+          }
+        });
+      }
       const blob = result.output("blob");
       const firstName =
         (document.getElementById("first-name") as HTMLInputElement)?.value ||
@@ -92,6 +127,7 @@ export default function Checkout() {
   return (
     <>
       <CssBaseline enableColorScheme />
+
       <Grid
         container
         sx={{
@@ -149,7 +185,7 @@ export default function Checkout() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
-              width: "100%",
+              width: "1000px",
               maxWidth: { sm: "100%", md: 600 },
               gap: 4,
             }}
