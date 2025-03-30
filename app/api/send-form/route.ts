@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
+import * as fs from 'fs/promises';
+
 export async function POST(request: Request) {
   try {
     const { pdfBlob, fullName } = await request.json();

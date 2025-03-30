@@ -1,11 +1,16 @@
 "use client";
 
-import { Typography } from "@mui/material";
+import { Typography, FormHelperText } from "@mui/material";
 import FormLabel from "@mui/material/FormLabel";
 import Grid from "@mui/material/Grid2";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { styled } from "@mui/material/styles";
 import ValidatedInput from "./ValidatedInput";
+
+interface AddressFormProps {
+  t: (path: string) => string;
+  validationErrors?: Record<string, string>;
+}
 
 const FormGrid = styled(Grid)(() => ({
   display: "flex",
@@ -14,7 +19,7 @@ const FormGrid = styled(Grid)(() => ({
   breakInside: "avoid",
 }));
 
-export default function AddressForm({ t }: { t: (path: string) => string }) {
+export default function AddressForm({ t, validationErrors = {} }: AddressFormProps) {
   return (
     <div id="address-form">
       <div style={{}}>
@@ -40,7 +45,11 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
             autoComplete="first name"
             required
             size="small"
+            error={!!validationErrors.firstName}
           />
+          {validationErrors.firstName && (
+            <FormHelperText error>{validationErrors.firstName}</FormHelperText>
+          )}
         </FormGrid>
         <FormGrid size={{ xs: 12, md: 6 }}>
           <FormLabel htmlFor="last-name" required>
@@ -54,7 +63,11 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
             autoComplete="last name"
             required
             size="small"
+            error={!!validationErrors.lastName}
           />
+          {validationErrors.lastName && (
+            <FormHelperText error>{validationErrors.lastName}</FormHelperText>
+          )}
         </FormGrid>
         <FormGrid size={{ xs: 12 }}>
           <FormLabel htmlFor="legalRepresentative" required>
@@ -67,7 +80,11 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
             placeholder="John Snow"
             autoComplete="name"
             required
+            error={!!validationErrors.legalRepresentative}
           />
+          {validationErrors.legalRepresentative && (
+            <FormHelperText error>{validationErrors.legalRepresentative}</FormHelperText>
+          )}
         </FormGrid>
         <FormGrid size={{ xs: 12 }}>
           <FormLabel htmlFor="email" required>
@@ -81,6 +98,7 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
             autoComplete="email"
             required
             size="small"
+            errorMessage={validationErrors.email}
           />
         </FormGrid>
 
@@ -96,6 +114,7 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
             autoComplete="off"
             required
             size="small"
+            errorMessage={validationErrors.identificationNumber}
           />
         </FormGrid>
         <FormGrid size={{ xs: 12 }}>
@@ -110,6 +129,7 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
             autoComplete="bday"
             required
             size="small"
+            errorMessage={validationErrors.dateOfBirth}
           />
         </FormGrid>
         <Typography
@@ -120,18 +140,22 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
           {t("medicalHistory.addressInfo")}
         </Typography>
         <FormGrid size={{ xs: 12 }}>
-          <FormLabel htmlFor="address1" required>
+          <FormLabel htmlFor="address" required>
             {t("address")}
           </FormLabel>
           <OutlinedInput
-            id="address1"
+            id="address"
             name="address1"
             type="text"
             placeholder="Street Address"
             autoComplete="address"
             required
             size="small"
+            error={!!validationErrors.address}
           />
+          {validationErrors.address && (
+            <FormHelperText error>{validationErrors.address}</FormHelperText>
+          )}
         </FormGrid>
         <FormGrid size={{ xs: 6 }}>
           <FormLabel htmlFor="city" required>
@@ -145,21 +169,29 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
             autoComplete="city"
             required
             size="small"
+            error={!!validationErrors.city}
           />
+          {validationErrors.city && (
+            <FormHelperText error>{validationErrors.city}</FormHelperText>
+          )}
         </FormGrid>
         <FormGrid size={{ xs: 6 }}>
           <FormLabel htmlFor="zip" required>
             {t("zipCode")}
           </FormLabel>
           <OutlinedInput
-            id="zip"
+            id="zipCode"
             name="zip"
             type="text"
             placeholder="12345"
             autoComplete="postal-code"
             required
             size="small"
+            error={!!validationErrors.zipCode}
           />
+          {validationErrors.zipCode && (
+            <FormHelperText error>{validationErrors.zipCode}</FormHelperText>
+          )}
         </FormGrid>
         <FormGrid size={{ xs: 6 }}>
           <FormLabel htmlFor="country" required>
@@ -173,7 +205,11 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
             autoComplete="country"
             required
             size="small"
+            error={!!validationErrors.country}
           />
+          {validationErrors.country && (
+            <FormHelperText error>{validationErrors.country}</FormHelperText>
+          )}
         </FormGrid>
         <FormGrid size={{ xs: 6 }}>
           <FormLabel htmlFor="phone" required>
@@ -187,6 +223,7 @@ export default function AddressForm({ t }: { t: (path: string) => string }) {
             autoComplete="phone"
             required
             size="small"
+            errorMessage={validationErrors.phone}
           />
         </FormGrid>
       </Grid>

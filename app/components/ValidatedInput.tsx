@@ -1,10 +1,11 @@
-import { OutlinedInput, OutlinedInputProps } from "@mui/material";
+import { OutlinedInput, OutlinedInputProps, FormHelperText } from "@mui/material";
 import { useState } from "react";
 
 type ValidationType = "email" | "phone" | "date" | "identificationNumber";
 
 interface ValidatedInputProps extends Omit<OutlinedInputProps, "error"> {
   validationType: ValidationType;
+  errorMessage?: string;
 }
 
 const VALIDATION_PATTERNS = {
@@ -25,15 +26,18 @@ export default function ValidatedInput({
   validationType,
   value,
   onChange,
+  errorMessage,
   ...props
 }: ValidatedInputProps) {
   const [error, setError] = useState(false);
+
+  const hasError = errorMessage ? true : error;
+  const displayErrorMessage = errorMessage || (error ? ERROR_MESSAGES[validationType] : "");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     const pattern = VALIDATION_PATTERNS[validationType];
 
-    // Only validate if there's a value
     if (newValue && !pattern.test(newValue)) {
       setError(true);
     } else {
@@ -46,14 +50,19 @@ export default function ValidatedInput({
   };
 
   return (
-    <OutlinedInput
-      {...props}
-      error={error}
-      onChange={handleChange}
-      value={value}
-      inputProps={{
-        title: error ? ERROR_MESSAGES[validationType] : undefined,
-      }}
-    />
+    <>
+      <OutlinedInput
+        {...props}
+        error={hasError}
+        onChange={handleChange}
+        value={value}
+        inputProps={{
+          title: displayErrorMessage || undefined,
+        }}
+      />
+      {hasError && (
+        <FormHelperText error>{displayErrorMessage}</FormHelperText>
+      )}
+    </>
   );
 }
