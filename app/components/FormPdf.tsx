@@ -672,22 +672,21 @@ const FormPdf: React.FC<FormPdfProps> = ({ formData }) => {
           </View>
         </View>
 
-        {/* Дата и подпись */}
-        <View style={styles.section}>
-          <View style={styles.field}>
-            <Text style={styles.label}>{t('date')}</Text>
-            <Text style={styles.value}>{formData.date || ''}</Text>
-          </View>
-        </View>
-        
         {/* Подтверждение */}
         <Text style={styles.confirmation}>
           {t('confirmation')}
         </Text>
         
-        {/* Подпись в конце документа, справа */}
-        <View style={styles.signature}>
-          <View style={styles.signatureContainer}>
+        {/* Дата и подпись в одной строке */}
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 20, marginBottom: 10 }}>
+          {/* Дата слева */}
+          <View style={{ width: '45%' }}>
+            <Text style={styles.label}>{t('date')}</Text>
+            <Text style={styles.value}>{formData.date || ''}</Text>
+          </View>
+          
+          {/* Подпись справа */}
+          <View style={{ width: '45%', alignItems: 'flex-end' }}>
             <Text style={[styles.label, { textAlign: 'center' }]}>{t('signature')}</Text>
             {formData.signature ? (
               <Image

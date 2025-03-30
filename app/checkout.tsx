@@ -72,7 +72,20 @@ export default function Checkout() {
       console.log('Signature failed validation');
     }
 
-    // Проверка соглашений убрана, они теперь необязательны
+    // Проверка соглашений
+    // Убрано требование обязательного согласия, так как эти поля опциональны
+    // const agreementSmsEmail = document.getElementById('agreementSmsAndEmail') as HTMLInputElement;
+    // const agreementNotify = document.getElementById('agreementNotify') as HTMLInputElement;
+    
+    // if (!agreementSmsEmail || !agreementSmsEmail.checked) {
+    //   errors.agreementSmsAndEmail = t("validation.agreementRequired");
+    //   console.log('agreementSmsAndEmail failed validation');
+    // }
+    
+    // if (!agreementNotify || !agreementNotify.checked) {
+    //   errors.agreementNotify = t("validation.agreementRequired");
+    //   console.log('agreementNotify failed validation');
+    // }
     
     console.log('Validation errors:', errors);
     setValidationErrors(errors);
