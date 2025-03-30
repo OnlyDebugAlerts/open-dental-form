@@ -45,14 +45,7 @@ export default function Checkout() {
   const requiredFields = [
     { id: 'first-name', name: 'firstName' },
     { id: 'last-name', name: 'lastName' },
-    { id: 'legalRepresentative', name: 'legalRepresentative' },
-    { id: 'email', name: 'email' },
     { id: 'phone', name: 'phone' },
-    { id: 'address', name: 'address' },
-    { id: 'city', name: 'city' },
-    { id: 'zipCode', name: 'zipCode' },
-    { id: 'country', name: 'country' },
-    { id: 'identificationNumber', name: 'identificationNumber' },
     { id: 'dateOfBirth', name: 'dateOfBirth' },
     { id: 'date', name: 'date' }
   ];
@@ -79,19 +72,7 @@ export default function Checkout() {
       console.log('Signature failed validation');
     }
 
-    // Проверка соглашений
-    const agreementSmsEmail = document.getElementById('agreementSmsAndEmail') as HTMLInputElement;
-    const agreementNotify = document.getElementById('agreementNotify') as HTMLInputElement;
-    
-    if (!agreementSmsEmail || !agreementSmsEmail.checked) {
-      errors.agreementSmsAndEmail = t("validation.agreementRequired");
-      console.log('agreementSmsAndEmail failed validation');
-    }
-    
-    if (!agreementNotify || !agreementNotify.checked) {
-      errors.agreementNotify = t("validation.agreementRequired");
-      console.log('agreementNotify failed validation');
-    }
+    // Проверка соглашений убрана, они теперь необязательны
     
     console.log('Validation errors:', errors);
     setValidationErrors(errors);
@@ -212,11 +193,6 @@ export default function Checkout() {
         const signatureCanvas = document.querySelector('.signature-canvas');
         if (signatureCanvas) {
           signatureCanvas.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      } else if (validationErrors.agreementSmsAndEmail || validationErrors.agreementNotify) {
-        const agreementElement = document.getElementById('agreementSmsAndEmail');
-        if (agreementElement) {
-          agreementElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }
       

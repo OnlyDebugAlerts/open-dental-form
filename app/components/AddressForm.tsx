@@ -70,7 +70,7 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
           )}
         </FormGrid>
         <FormGrid size={{ xs: 12 }}>
-          <FormLabel htmlFor="legalRepresentative" required>
+          <FormLabel htmlFor="legalRepresentative">
             {t("legalRepresentative")}
           </FormLabel>
           <OutlinedInput
@@ -79,7 +79,6 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
             type="text"
             placeholder="John Snow"
             autoComplete="name"
-            required
             error={!!validationErrors.legalRepresentative}
           />
           {validationErrors.legalRepresentative && (
@@ -87,7 +86,7 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
           )}
         </FormGrid>
         <FormGrid size={{ xs: 12 }}>
-          <FormLabel htmlFor="email" required>
+          <FormLabel htmlFor="email">
             {t("email")}
           </FormLabel>
           <ValidatedInput
@@ -96,14 +95,13 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
             validationType="email"
             placeholder="john.snow@example.com"
             autoComplete="email"
-            required
             size="small"
             errorMessage={validationErrors.email}
           />
         </FormGrid>
 
         <FormGrid size={{ xs: 12 }}>
-          <FormLabel htmlFor="identificationNumber" required>
+          <FormLabel htmlFor="identificationNumber">
             {t("identificationNumber")}
           </FormLabel>
           <ValidatedInput
@@ -112,7 +110,6 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
             validationType="identificationNumber"
             placeholder="123456/7890"
             autoComplete="off"
-            required
             size="small"
             errorMessage={validationErrors.identificationNumber}
           />
@@ -140,7 +137,7 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
           {t("medicalHistory.addressInfo")}
         </Typography>
         <FormGrid size={{ xs: 12 }}>
-          <FormLabel htmlFor="address" required>
+          <FormLabel htmlFor="address">
             {t("address")}
           </FormLabel>
           <OutlinedInput
@@ -149,7 +146,6 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
             type="text"
             placeholder="Street Address"
             autoComplete="address"
-            required
             size="small"
             error={!!validationErrors.address}
           />
@@ -158,7 +154,7 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
           )}
         </FormGrid>
         <FormGrid size={{ xs: 6 }}>
-          <FormLabel htmlFor="city" required>
+          <FormLabel htmlFor="city">
             {t("city")}
           </FormLabel>
           <OutlinedInput
@@ -167,7 +163,6 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
             type="text"
             placeholder="New York"
             autoComplete="city"
-            required
             size="small"
             error={!!validationErrors.city}
           />
@@ -176,7 +171,7 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
           )}
         </FormGrid>
         <FormGrid size={{ xs: 6 }}>
-          <FormLabel htmlFor="zip" required>
+          <FormLabel htmlFor="zip">
             {t("zipCode")}
           </FormLabel>
           <OutlinedInput
@@ -185,7 +180,6 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
             type="text"
             placeholder="12345"
             autoComplete="postal-code"
-            required
             size="small"
             error={!!validationErrors.zipCode}
           />
@@ -194,7 +188,7 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
           )}
         </FormGrid>
         <FormGrid size={{ xs: 6 }}>
-          <FormLabel htmlFor="country" required>
+          <FormLabel htmlFor="country">
             {t("country")}
           </FormLabel>
           <OutlinedInput
@@ -203,7 +197,6 @@ export default function AddressForm({ t, validationErrors = {} }: AddressFormPro
             type="text"
             placeholder="United States"
             autoComplete="country"
-            required
             size="small"
             error={!!validationErrors.country}
           />
