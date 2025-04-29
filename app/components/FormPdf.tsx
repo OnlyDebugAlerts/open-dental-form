@@ -6,27 +6,16 @@ import {
   View,
   StyleSheet,
   Font,
-  PDFViewer,
   Image,
 } from '@react-pdf/renderer';
 
-// Регистрируем шрифты
 Font.register({
-  family: 'Helvetica',
+  family: 'Noto Sans',
   fonts: [
-    { src: 'https://cdn.jsdelivr.net/npm/@fontsource/helvetica@4.5.0/files/helvetica-latin-400-normal.woff' },
-    { src: 'https://cdn.jsdelivr.net/npm/@fontsource/helvetica@4.5.0/files/helvetica-latin-700-normal.woff', fontWeight: 'bold' },
-  ],
-});
-
-// Добавляем шрифт с поддержкой центральноевропейских символов
-Font.register({
-  family: 'Open Sans',
-  fonts: [
-    { src: 'https://cdn.jsdelivr.net/npm/@fontsource/open-sans@4.5.0/files/open-sans-latin-ext-400-normal.woff' },
-    { src: 'https://cdn.jsdelivr.net/npm/@fontsource/open-sans@4.5.0/files/open-sans-latin-ext-700-normal.woff', fontWeight: 'bold' },
-    { src: 'https://cdn.jsdelivr.net/npm/@fontsource/open-sans@4.5.0/files/open-sans-latin-ext-400-italic.woff', fontStyle: 'italic' }
-  ],
+    { src: 'https://cdn.jsdelivr.net/npm/@fontsource/noto-sans@4.5.0/files/noto-sans-all-400-normal.woff' },
+    { src: 'https://cdn.jsdelivr.net/npm/@fontsource/noto-sans@4.5.0/files/noto-sans-all-700-normal.woff', fontWeight: 'bold' },
+    { src: 'https://cdn.jsdelivr.net/npm/@fontsource/noto-sans@4.5.0/files/noto-sans-all-400-italic.woff', fontStyle: 'italic' },
+  ]
 });
 
 // Создаем стили
@@ -34,7 +23,7 @@ const styles = StyleSheet.create({
   page: {
     padding: 30,
     backgroundColor: '#ffffff',
-    fontFamily: 'Open Sans', // Используем шрифт с поддержкой центральноевропейских символов
+    fontFamily: 'Noto Sans', // Use Noto Sans
   },
   header: {
     marginBottom: 20,
@@ -554,7 +543,7 @@ const FormPdf: React.FC<FormPdfProps> = ({ formData }) => {
           {formData.currentMedicationsDetails && (
             <View style={styles.field}>
               <Text style={styles.label}>{t('details')}</Text>
-              <Text style={styles.value}>{formData.currentMedicationsDetails}</Text>
+              <Text style={[styles.value, { fontFamily: 'Noto Sans' }]}>{formData.currentMedicationsDetails}</Text>
             </View>
           )}
           <View style={styles.field}>
@@ -564,7 +553,7 @@ const FormPdf: React.FC<FormPdfProps> = ({ formData }) => {
           {formData.adverseReactionDetails && (
             <View style={styles.field}>
               <Text style={styles.label}>{t('details')}</Text>
-              <Text style={styles.value}>{formData.adverseReactionDetails}</Text>
+              <Text style={[styles.value, { fontFamily: 'Noto Sans' }]}>{formData.adverseReactionDetails}</Text>
             </View>
           )}
         </View>
@@ -581,7 +570,7 @@ const FormPdf: React.FC<FormPdfProps> = ({ formData }) => {
               {disease.details && (
                 <View style={styles.field}>
                   <Text style={styles.label}>{t('details')}</Text>
-                  <Text style={styles.value}>{disease.details}</Text>
+                  <Text style={[styles.value, { fontFamily: 'Noto Sans' }]}>{disease.details}</Text>
                 </View>
               )}
             </React.Fragment>
@@ -598,7 +587,7 @@ const FormPdf: React.FC<FormPdfProps> = ({ formData }) => {
           {formData.allergiesMedicationsDetails && (
             <View style={styles.field}>
               <Text style={styles.label}>{t('details')}</Text>
-              <Text style={styles.value}>{formData.allergiesMedicationsDetails}</Text>
+              <Text style={[styles.value, { fontFamily: 'Noto Sans' }]}>{formData.allergiesMedicationsDetails}</Text>
             </View>
           )}
           <View style={styles.field}>
@@ -608,7 +597,7 @@ const FormPdf: React.FC<FormPdfProps> = ({ formData }) => {
           {formData.otherAllergiesDetails && (
             <View style={styles.field}>
               <Text style={styles.label}>{t('details')}</Text>
-              <Text style={styles.value}>{formData.otherAllergiesDetails}</Text>
+              <Text style={[styles.value, { fontFamily: 'Noto Sans' }]}>{formData.otherAllergiesDetails}</Text>
             </View>
           )}
         </View>
@@ -631,7 +620,7 @@ const FormPdf: React.FC<FormPdfProps> = ({ formData }) => {
           {formData.smokingDetails && (
             <View style={styles.field}>
               <Text style={styles.label}>{t('details')}</Text>
-              <Text style={styles.value}>{formData.smokingDetails}</Text>
+              <Text style={[styles.value, { fontFamily: 'Noto Sans' }]}>{formData.smokingDetails}</Text>
             </View>
           )}
           <View style={styles.field}>
@@ -650,7 +639,7 @@ const FormPdf: React.FC<FormPdfProps> = ({ formData }) => {
           {formData.pregnancyDetails && (
             <View style={styles.field}>
               <Text style={styles.label}>{t('details')}</Text>
-              <Text style={styles.value}>{formData.pregnancyDetails}</Text>
+              <Text style={[styles.value, { fontFamily: 'Noto Sans' }]}>{formData.pregnancyDetails}</Text>
             </View>
           )}
           <View style={styles.field}>
